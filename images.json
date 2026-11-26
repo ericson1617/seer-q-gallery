@@ -1,11 +1,19 @@
 [
  {
+  "src": "images/角色/空元行者.png",
+  "title": "空元行者",
+  "category": "角色",
+  "bytes": 2411271,
+  "v": "49aa9755",
+  "added": 1795707796750
+ },
+ {
   "src": "images/角色/譜尼.png",
   "title": "譜尼",
   "category": "角色",
   "bytes": 1466284,
   "v": "8cd9034c",
-  "added": 1795707580953
+  "added": 1795707583000
  },
  {
   "src": "images/角色/佩洛瑟斯.png",
