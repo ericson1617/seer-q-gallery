@@ -208,6 +208,8 @@ footer .wrap { padding-block: 20px 32px; display: flex; flex-wrap: wrap; gap: 8p
   const size = (b) => b > 1048576 ? (b / 1048576).toFixed(1) + ' MB' : Math.max(1, Math.round(b / 1024)) + ' KB';
   const idOf = (src) => { let h = 0; for (const c of src) h = (h * 31 + c.codePointAt(0)) >>> 0; return 'p-' + h.toString(36); };
   const url = (src) => src.split('/').map(encodeURIComponent).join('/');
+  // 加上版本碼，圖片換新時瀏覽器才不會顯示舊的快取
+  const vurl = (p) => url(p.src) + (p.v ? '?v=' + p.v : '');
 
   function toast(msg) {
     const t = $('toast'); t.textContent = msg; t.hidden = false;
@@ -231,12 +233,12 @@ footer .wrap { padding-block: 20px 32px; display: flex; flex-wrap: wrap; gap: 8p
     $('grid').innerHTML = shown.map((p, i) => `
       <figure class="card">
         <button class="open" data-i="${i}" aria-label="放大查看 ${esc(p.title)}">
-          <img src="${esc(url(p.src))}" alt="${esc(p.title)}" loading="lazy" decoding="async">
+          <img src="${esc(vurl(p))}" alt="${esc(p.title)}" loading="lazy" decoding="async">
         </button>
         ${now - p.added < NEW_MS ? '<span class="new">NEW</span>' : ''}
         <figcaption class="meta">
           <div><h3>${esc(p.title)}</h3><small>${esc(p.category)} · ${ext(p.src)} · ${size(p.bytes)}</small></div>
-          <a class="dl" href="${esc(url(p.src))}" download="${esc(fileName(p.src))}" aria-label="下載 ${esc(p.title)}" title="下載">${DL_ICON}</a>
+          <a class="dl" href="${esc(vurl(p))}" download="${esc(fileName(p.src))}" aria-label="下載 ${esc(p.title)}" title="下載">${DL_ICON}</a>
         </figcaption>
       </figure>`).join('');
     $('empty').hidden = shown.length > 0;
@@ -249,11 +251,11 @@ footer .wrap { padding-block: 20px 32px; display: flex; flex-wrap: wrap; gap: 8p
     current = (i + shown.length) % shown.length;
     const p = shown[current];
     const img = $('lb-img');
-    img.src = url(p.src); img.alt = p.title;
+    img.src = vurl(p); img.alt = p.title;
     $('lb-name').textContent = p.title;
     $('lb-info').textContent = `${current + 1} / ${shown.length} · ${p.category} · ${size(p.bytes)}`;
     img.onload = () => { $('lb-info').textContent = `${current + 1} / ${shown.length} · ${p.category} · ${img.naturalWidth} × ${img.naturalHeight} px · ${size(p.bytes)}`; };
-    const dl = $('lb-dl'); dl.href = url(p.src); dl.setAttribute('download', fileName(p.src));
+    const dl = $('lb-dl'); dl.href = vurl(p); dl.setAttribute('download', fileName(p.src));
     $('lb').hidden = false; document.body.style.overflow = 'hidden';
     history.replaceState(null, '', '#' + idOf(p.src));
     $('lb-close').focus({ preventScroll: true });

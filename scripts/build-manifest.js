@@ -4,6 +4,7 @@
 const fs = require('fs');
 const path = require('path');
 const { execSync } = require('child_process');
+const crypto = require('crypto');
 
 const ROOT = path.join(__dirname, '..');
 const IMG_DIR = path.join(ROOT, 'images');
@@ -37,6 +38,7 @@ const list = walk(IMG_DIR).map((file) => {
     title,
     category,
     bytes: fs.statSync(file).size,
+    v: crypto.createHash('sha1').update(fs.readFileSync(file)).digest('hex').slice(0, 8),
     added: Math.round(addedTime(file)),
   };
 }).sort((a, b) => b.added - a.added || a.src.localeCompare(b.src, 'zh-Hant'));
