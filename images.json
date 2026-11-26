@@ -1,5 +1,13 @@
 [
  {
+  "src": "images/角色/譜尼.png",
+  "title": "譜尼",
+  "category": "角色",
+  "bytes": 1466284,
+  "v": "8cd9034c",
+  "added": 1795707580953
+ },
+ {
   "src": "images/角色/佩洛瑟斯.png",
   "title": "佩洛瑟斯",
   "category": "角色",
