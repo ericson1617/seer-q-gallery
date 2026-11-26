@@ -1,9 +1,16 @@
 [
  {
+  "src": "images/角色/湮滅之主·吒克斯.png",
+  "title": "湮滅之主·吒克斯",
+  "category": "角色",
+  "bytes": 1990080,
+  "added": 1795704549023
+ },
+ {
   "src": "images/角色/克雷弗德.png",
   "title": "克雷弗德",
   "category": "角色",
   "bytes": 2450151,
-  "added": 1795704420374
+  "added": 1795704420000
  }
 ]
