@@ -1,11 +1,19 @@
 [
  {
+  "src": "images/角色/貝狄薇爾.png",
+  "title": "貝狄薇爾",
+  "category": "角色",
+  "bytes": 1934991,
+  "v": "5a941885",
+  "added": 1795735348734
+ },
+ {
   "src": "images/角色/逐界蒼星.png",
   "title": "逐界蒼星",
   "category": "角色",
   "bytes": 2250869,
   "v": "06d6d110",
-  "added": 1795711814053
+  "added": 1795711816000
  },
  {
   "src": "images/角色/弒序神羅.png",
@@ -13,7 +21,7 @@
   "category": "角色",
   "bytes": 2122775,
   "v": "a5a846e5",
-  "added": 1795711814050
+  "added": 1795711816000
  },
  {
   "src": "images/角色/琉夢.png",
