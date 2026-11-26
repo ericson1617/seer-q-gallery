@@ -5,7 +5,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>賽爾號Q版圖庫</title>
 <meta name="claude:viewport-fit-sides" content="cover">
-<meta name="description" content="賽爾號Q版圖片分享，免費瀏覽與下載。">
+<meta name="description" content="軟Q的阿光｜賽爾號Q版圖片分享，免費瀏覽與下載。">
+<link rel="icon" href="assets/favicon.png">
+<meta property="og:image" content="assets/banner.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@500;700;900&display=swap">
@@ -17,10 +19,10 @@
   --ink: #1B2A3A;
   --muted: #5B6B7B;
   --line: #D5E1E8;
-  --accent: #FF8A3D;
-  --accent-ink: #FFFFFF;
+  --accent: #F2B21B;
+  --accent-ink: #1B1440;
   --teal: #1F9E90;
-  --band: #16263A;
+  --band: #141B5D;
   --band-ink: #F2F7FA;
   --shade: rgba(16, 28, 42, .88);
   --font: "Zen Maru Gothic", "PingFang TC", "Microsoft JhengHei", "Noto Sans TC", system-ui, sans-serif;
@@ -29,13 +31,13 @@
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
     --bg: #0E1823; --surface: #172535; --ink: #E7EFF4; --muted: #9DB0C0; --line: #24384C;
-    --accent: #FF9B57; --accent-ink: #1B1206; --teal: #4CD2C1; --band: #0A121B; --band-ink: #F2F7FA;
+    --accent: #F6BE3A; --accent-ink: #1B1440; --teal: #4CD2C1; --band: #141B5D; --band-ink: #F2F7FA;
     --shade: rgba(4, 9, 14, .92); color-scheme: dark;
   }
 }
 :root[data-theme="dark"] {
   --bg: #0E1823; --surface: #172535; --ink: #E7EFF4; --muted: #9DB0C0; --line: #24384C;
-  --accent: #FF9B57; --accent-ink: #1B1206; --teal: #4CD2C1; --band: #0A121B; --band-ink: #F2F7FA;
+  --accent: #F6BE3A; --accent-ink: #1B1440; --teal: #4CD2C1; --band: #141B5D; --band-ink: #F2F7FA;
   --shade: rgba(4, 9, 14, .92); color-scheme: dark;
 }
 
@@ -52,16 +54,20 @@ button, a { font-family: inherit; }
 .hero { position: relative; overflow: hidden; background: var(--band); color: var(--band-ink);
   margin-top: calc(-1 * env(safe-area-inset-top, 0px)); padding-top: env(safe-area-inset-top, 0px); }
 .hero canvas { position: absolute; inset: 0; width: 100%; height: 100%; }
-.hero .wrap { position: relative; padding-block: 44px 36px; display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 20px; }
-.brand { display: flex; align-items: center; gap: 16px; min-width: 0; }
-.badge { flex: none; width: 64px; height: 64px; }
-.hero h1 { margin: 0; font-size: clamp(28px, 5vw, 44px); font-weight: 900; line-height: 1.15; letter-spacing: .02em; text-wrap: balance; }
+.banner { position: relative; display: block; width: 100%; height: auto; max-width: 1672px; margin: 0 auto; aspect-ratio: 1672 / 371; object-fit: cover; }
+.hero .wrap { position: relative; padding-block: 0 28px; display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 16px 20px; }
+.brand { display: flex; align-items: flex-end; gap: 18px; min-width: 0; }
+.avatar { flex: none; width: clamp(84px, 13vw, 128px); height: auto; aspect-ratio: 1; border-radius: 50%; object-fit: cover;
+  border: 5px solid var(--band); box-shadow: 0 0 0 3px var(--accent); margin-top: calc(-1 * clamp(36px, 5.5vw, 60px)); background: var(--band); }
+.brand > div { min-width: 0; padding-bottom: 4px; }
+.hero h1 { margin: 0; font-size: clamp(26px, 4.6vw, 42px); font-weight: 900; line-height: 1.15; letter-spacing: .02em; text-wrap: balance; }
 .hero h1 span { color: var(--accent); }
-.hero p { margin: 4px 0 0; color: #B9CAD8; font-weight: 500; }
+.hero p { margin: 2px 0 0; color: #C9D2F0; font-weight: 700; font-size: clamp(15px, 2vw, 18px); }
+.hero p b { color: var(--accent); }
 .stats { display: flex; gap: 22px; font-variant-numeric: tabular-nums; }
 .stats div { display: grid; }
 .stats b { font-size: 28px; font-weight: 900; line-height: 1.1; }
-.stats small { color: #B9CAD8; font-size: 12px; letter-spacing: .08em; }
+.stats small { color: #C9D2F0; font-size: 12px; letter-spacing: .08em; }
 
 /* 工具列 */
 .bar { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5; background: var(--bg); border-bottom: 1px solid var(--line); }
@@ -131,19 +137,13 @@ footer .wrap { padding-block: 20px 32px; display: flex; flex-wrap: wrap; gap: 8p
 
 <header class="hero">
   <canvas id="stars" aria-hidden="true"></canvas>
+  <img class="banner" src="assets/banner.jpg" alt="軟Q的阿光 頻道橫幅" width="1672" height="371">
   <div class="wrap">
     <div class="brand">
-      <svg class="badge" viewBox="0 0 64 64" aria-hidden="true">
-        <circle cx="32" cy="36" r="22" fill="#FF8A3D" stroke="#F2F7FA" stroke-width="3"/>
-        <line x1="32" y1="14" x2="38" y2="4" stroke="#F2F7FA" stroke-width="3" stroke-linecap="round"/>
-        <circle cx="39" cy="4" r="3.5" fill="#FFD84D"/>
-        <ellipse cx="25" cy="34" rx="3.5" ry="4.5" fill="#16263A"/><ellipse cx="39" cy="34" rx="3.5" ry="4.5" fill="#16263A"/>
-        <path d="M28 43 q4 4 8 0" stroke="#16263A" stroke-width="2.5" fill="none" stroke-linecap="round"/>
-        <ellipse cx="20" cy="41" rx="3.5" ry="2" fill="#FF6F8E" opacity=".7"/><ellipse cx="44" cy="41" rx="3.5" ry="2" fill="#FF6F8E" opacity=".7"/>
-      </svg>
+      <img class="avatar" src="assets/avatar.jpg" alt="軟Q的阿光 的大頭貼" width="128" height="128">
       <div>
-        <h1>賽爾號 <span>Q版</span> 圖庫</h1>
-        <p>我畫的Q版小圖都放這裡，喜歡就點下載帶回家！</p>
+        <h1>賽爾號<span>Q版</span>圖庫</h1>
+        <p><b>軟Q的阿光</b></p>
       </div>
     </div>
     <div class="stats" aria-live="polite">
@@ -172,7 +172,7 @@ footer .wrap { padding-block: 20px 32px; display: flex; flex-wrap: wrap; gap: 8p
 
 <footer>
   <div class="wrap">
-    <span>粉絲自製分享站，圖片僅供個人收藏使用，轉載請註明出處。</span>
+    <span>軟Q的阿光 的粉絲自製分享站，圖片僅供個人收藏使用，轉載請註明出處。</span>
     <span>賽爾號相關角色版權屬原權利人所有。</span>
   </div>
 </footer>
@@ -312,7 +312,7 @@ footer .wrap { padding-block: 20px 32px; display: flex; flex-wrap: wrap; gap: 8p
     ctx.clearRect(0, 0, cv.width, cv.height);
     for (const s of stars) {
       ctx.globalAlpha = reduce ? .7 : .35 + .35 * Math.sin(t / 900 + s.p);
-      ctx.fillStyle = s.s > 1.6 ? '#FFD84D' : '#F2F7FA';
+      ctx.fillStyle = s.s > 1.6 ? '#F6BE3A' : '#F2F7FA';
       ctx.beginPath(); ctx.arc(s.x, s.y, s.s, 0, 6.28); ctx.fill();
     }
     if (!reduce) requestAnimationFrame(draw);
