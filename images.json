@@ -1,11 +1,19 @@
 [
  {
+  "src": "images/角色/柯爾霍德.png",
+  "title": "柯爾霍德",
+  "category": "角色",
+  "bytes": 2034928,
+  "v": "9c62b72c",
+  "added": 1795710687731
+ },
+ {
   "src": "images/角色/神覺‧米斯蒂克.png",
   "title": "神覺‧米斯蒂克",
   "category": "角色",
   "bytes": 2248911,
   "v": "b4debffd",
-  "added": 1795709824512
+  "added": 1795709826000
  },
  {
   "src": "images/角色/星辰萬象．天啟星魂.png",
