@@ -149,6 +149,7 @@ footer .wrap { padding-block: 20px 32px; display: flex; flex-wrap: wrap; gap: 8p
     <div class="stats" aria-live="polite">
       <div><b id="stat-count">0</b><small>張圖片</small></div>
       <div><b id="stat-cats">0</b><small>個分類</small></div>
+      <div id="stat-views-box" hidden><b id="stat-views">0</b><small>次瀏覽</small></div>
     </div>
   </div>
 </header>
@@ -300,6 +301,25 @@ footer .wrap { padding-block: 20px 32px; display: flex; flex-wrap: wrap; gap: 8p
     .then((r) => (r.ok ? r.json() : []))
     .catch(() => [])
     .then((list) => { all = list; renderChips(); render(); openFromHash(); });
+
+  // 瀏覽次數（免費計數服務；兩個都失敗就不顯示）
+  const NS = 'ericson1617-seer-q-gallery', KEY = 'visits';
+  const counters = [
+    () => fetch(`https://abacus.jasoncameron.dev/hit/${NS}/${KEY}`).then((r) => r.json()).then((d) => d.value),
+    () => fetch(`https://api.counterapi.dev/v1/${NS}/${KEY}/up`).then((r) => r.json()).then((d) => d.count),
+  ];
+  (async () => {
+    for (const hit of counters) {
+      try {
+        const n = await hit();
+        if (Number.isFinite(n)) {
+          $('stat-views').textContent = n.toLocaleString('zh-TW');
+          $('stat-views-box').hidden = false;
+          return;
+        }
+      } catch (e) { /* 換下一個服務 */ }
+    }
+  })();
 
   // 頁首的小星星
   const cv = $('stars'), ctx = cv.getContext('2d');
