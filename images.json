@@ -1,10 +1,17 @@
 [
  {
+  "src": "images/角色/靈巢之主·索杰德爾.png",
+  "title": "靈巢之主·索杰德爾",
+  "category": "角色",
+  "bytes": 2993830,
+  "added": 1795705060246
+ },
+ {
   "src": "images/角色/喬列尼德.png",
   "title": "喬列尼德",
   "category": "角色",
   "bytes": 2068401,
-  "added": 1795704586691
+  "added": 1795704586000
  },
  {
   "src": "images/角色/湮滅之主·吒克斯.png",
