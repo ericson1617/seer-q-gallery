@@ -199,7 +199,7 @@ footer .wrap { padding-block: 20px 32px; display: flex; flex-wrap: wrap; gap: 8p
 (() => {
   const $ = (id) => document.getElementById(id);
   const DL_ICON = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"/></svg>';
-  const NEW_MS = 7 * 24 * 3600 * 1000;
+  const NEW_MS = 1 * 24 * 3600 * 1000; // NEW 標籤顯示 1 天
   let all = [], shown = [], cat = '全部', current = -1;
 
   const esc = (s) => String(s).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
