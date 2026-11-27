@@ -1,11 +1,19 @@
 [
  {
+  "src": "images/角色/霍光.png",
+  "title": "霍光",
+  "category": "角色",
+  "bytes": 1985551,
+  "v": "0b7fab2c",
+  "added": 1795772671332
+ },
+ {
   "src": "images/角色/貝狄薇爾.png",
   "title": "貝狄薇爾",
   "category": "角色",
   "bytes": 1934991,
   "v": "5a941885",
-  "added": 1795735348734
+  "added": 1795735354000
  },
  {
   "src": "images/角色/逐界蒼星.png",
