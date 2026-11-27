@@ -1,11 +1,19 @@
 [
  {
+  "src": "images/角色/聖諭邪魘.png",
+  "title": "聖諭邪魘",
+  "category": "角色",
+  "bytes": 1949962,
+  "v": "6f01de13",
+  "added": 1795822531337
+ },
+ {
   "src": "images/角色/夢天睡神·休普諾斯.png",
   "title": "夢天睡神·休普諾斯",
   "category": "角色",
   "bytes": 1842097,
   "v": "7b5cb165",
-  "added": 1795822234566
+  "added": 1795822239000
  },
  {
   "src": "images/角色/至序聖華.png",
